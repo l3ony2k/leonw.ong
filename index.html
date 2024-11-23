@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
-    <meta name="description" content="Welcome to my little corner of the internet! Check out my blog and social platforms.">
-    
+    <meta name="description"
+        content="Welcome to my little corner of the internet! Check out my blog and social platforms.">
+
     <!-- Sets the status bar style to transparent -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Leon's Site" />
-    <meta property="og:description" content="Welcome to my little corner of the internet! Check out my blog and social platforms." />
+    <meta property="og:description"
+        content="Welcome to my little corner of the internet! Check out my blog and social platforms." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://leonw.ong/" />
     <meta property="og:image" content="https://leonw.ong/og-image.png" />
@@ -20,7 +23,8 @@
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Leon's Site" />
-    <meta name="twitter:description" content="Welcome to my little corner of the internet! Check out my blog and social platforms." />
+    <meta name="twitter:description"
+        content="Welcome to my little corner of the internet! Check out my blog and social platforms." />
     <meta name="twitter:image" content="https://leonw.ong/og-image.png" />
 
     <!-- favicon -->
@@ -36,25 +40,36 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leon Wong</title>
     <style>
         :root {
-            --bg-color: #fbf1c7; /* Gruvbox light background */
-            --text-color: #3c3836; /* Gruvbox dark foreground text */
-            --link-color: #458588; /* Gruvbox blue */
-            --link-hover-color: var(--bg-color); /* Gruvbox light blue */
+            --bg-color: #fbf1c7;
+            /* Gruvbox light background */
+            --text-color: #3c3836;
+            /* Gruvbox dark foreground text */
+            --link-color: #458588;
+            /* Gruvbox blue */
+            --link-hover-color: var(--bg-color);
+            /* Gruvbox light blue */
         }
+
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg-color: #282828; /* Gruvbox dark background */
-                --text-color: #EBDBB2; /* Gruvbox light foreground text */
-                --link-color: #83a598; /* Gruvbox light blue */
-                --link-hover-color: var(--bg-color); /* Gruvbox aqua */
+                --bg-color: #282828;
+                /* Gruvbox dark background */
+                --text-color: #EBDBB2;
+                /* Gruvbox light foreground text */
+                --link-color: #83a598;
+                /* Gruvbox light blue */
+                --link-hover-color: var(--bg-color);
+                /* Gruvbox aqua */
             }
         }
+
         body {
             font-family: "IBM Plex Mono", monospace;
             line-height: 1.6;
@@ -68,6 +83,7 @@
             min-height: 100vh;
             transition: background-color 0.3s, color 0.3s;
         }
+
         .container {
             width: 90%;
             max-width: 800px;
@@ -75,26 +91,31 @@
             box-sizing: border-box;
             position: relative;
         }
+
         h1 {
             font-size: 3em;
             margin-bottom: 30px;
             font-weight: Bold;
             letter-spacing: -1px;
         }
+
         p {
             margin-bottom: 20px;
             line-height: 1.75;
         }
+
         a {
             color: var(--link-color);
             text-decoration: none;
             font-style: italic;
             transition: color 0.3s;
         }
+
         a:hover {
             color: var(--link-hover-color);
             background-color: var(--link-color);
         }
+
         #mode-toggle {
             position: absolute;
             top: 20px;
@@ -106,65 +127,81 @@
             width: 24px;
             height: 24px;
         }
+
         #mode-toggle svg {
             width: 100%;
             height: 100%;
             fill: var(--text-color);
             transition: fill 0.3s;
         }
+
         body.light-mode {
-            --bg-color: #fbf1c7; /* Gruvbox light background */
-            --text-color: #3c3836; /* Gruvbox dark text */
-            --link-color: #458588; /* Gruvbox blue */
-            --link-hover-color: var(--bg-color); /* Gruvbox light blue */
+            --bg-color: #fbf1c7;
+            /* Gruvbox light background */
+            --text-color: #3c3836;
+            /* Gruvbox dark text */
+            --link-color: #458588;
+            /* Gruvbox blue */
+            --link-hover-color: var(--bg-color);
+            /* Gruvbox light blue */
         }
+
         body.dark-mode {
-            --bg-color: #282828; /* Gruvbox dark background */
-            --text-color: #EBDBB2; /* Gruvbox light text */
-            --link-color: #83a598; /* Gruvbox light blue */
-            --link-hover-color: var(--bg-color); /* Gruvbox aqua */
+            --bg-color: #282828;
+            /* Gruvbox dark background */
+            --text-color: #EBDBB2;
+            /* Gruvbox light text */
+            --link-color: #83a598;
+            /* Gruvbox light blue */
+            --link-hover-color: var(--bg-color);
+            /* Gruvbox aqua */
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <button id="mode-toggle" aria-label="Toggle dark mode">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <!-- Sun Icon -->
-                <g class="sun" fill="none" stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="5"/>
-                  <line x1="12" y1="1" x2="12" y2="3"/>
-                  <line x1="12" y1="21" x2="12" y2="23"/>
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                  <line x1="1" y1="12" x2="3" y2="12"/>
-                  <line x1="21" y1="12" x2="23" y2="12"/>
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                <g class="sun" fill="none" stroke="var(--text-color)" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5" />
+                    <line x1="12" y1="1" x2="12" y2="3" />
+                    <line x1="12" y1="21" x2="12" y2="23" />
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                    <line x1="1" y1="12" x2="3" y2="12" />
+                    <line x1="21" y1="12" x2="23" y2="12" />
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                 </g>
-                
+
                 <!-- Moon Icon -->
-                <g class="moon" fill="none" stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-                  <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                <g class="moon" fill="none" stroke="var(--text-color)" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" style="display: none;">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
                 </g>
-              </svg>
+            </svg>
         </button>
         <h1>Leon Wong</h1>
-        <p>
-            Welcome to my little corner of the internet! Check out <a href="https://l3on.site/" target="_blank">my blog</a>, it is where I gather my thoughts, ideas, and creations. I started this site to create a space that feels personal and true to the spirit of what the internet used to be — a place for individuality and expression.
+        <p> Welcome to my little corner of the internet! Check out <a href="https://l3on.site/" target="_blank">✍️ my
+                blog</a>, where I gather my thoughts, ideas, and creations. I started this site to create a space that
+            feels personal and true to the spirit of what the internet used to be — a place for individuality and
+            expression. </p>
+        <p> I'm also on <a href="https://www.are.na/lok" target="_blank">🗃️ Are.na</a>. It’s like a digital garden or
+            public shelves that I enjoy nurturing with curiosity and care. </p>
+        <p> You can catch me out and about on <a href="https://bsky.app/profile/leonw.ong" target="_blank">🦋
+                Bluesky</a>, <a href="https://www.instagram.com/l3on_y2k/" target="_blank">📷 Instagram</a>, or if you
+            like, <a href="https://twitter.com/l3on_y2k" target="_blank">Twitter</a> — sometimes I like to share bits
+            and pieces of my world across these platforms. I’m also on <a href="https://boxd.it/8rWaF/"
+                target="_blank">🎫 Letterboxd</a>, where I write some rough thoughts about the movies I watch. Oh, and
+            I’m also on <a href="https://github.com/l3ony2k">🧑‍💻 Github</a>, but I don’t have much going on there.
         </p>
-        <p>
-            I'm also on <a href="https://www.are.na/lok" target="_blank">Are.na</a>. It’s like a digital garden that I enjoy nurturing with curiosity and care.
-        </p>
-        <p>
-            You can catch me out and about on <a href="https://www.instagram.com/l3on_y2k/" target="_blank">Instagram</a>, <a href="https://twitter.com/l3on_y2k" target="_blank">Twitter</a>, and <a href="https://bsky.app/profile/leonw.ong" target="_blank">Bluesky</a> — sometimes I like to share bits and pieces of my world across these platforms.
-        </p>
-        <p>
-            If you ever feel like saying hello or sharing something, drop me a message at <a href="mailto:l3on@duck.com">l3on#duck.com</a>. I’m always up for a chat!
-        </p>
-        <p>
-            Thank you for stopping by, and enjoy surfing the internet!
-        </p>
+        <p> As you can see, most of my social handles are <span style="font-size: .9rem;background: #8883;padding: 0 .25rem;">@l3on_y2k</span>. </p>
+        <p> If you ever feel like saying hello or sharing something, drop me a message at <a
+                href="mailto:l3on@duck.com">l3on#duck.com</a>. I’m always up for a chat! </p>
+        <p> Thanks for stopping by, and enjoy surfing the internet! </p>
     </div>
     <script>
         const body = document.body;
@@ -213,4 +250,5 @@
         });
     </script>
 </body>
+
 </html>
