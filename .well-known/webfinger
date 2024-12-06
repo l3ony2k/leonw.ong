@@ -1,0 +1,18 @@
+{
+  "subject": "acct:me@leonw.ong",
+  "aliases": [
+    "https://c.im/@lok"
+  ],
+  "links": [
+    {
+      "rel": "http://webfinger.net/rel/profile-page",
+      "type": "text/html",
+      "href": "https://c.im/@lok"
+    },
+    {
+      "rel": "self",
+      "type": "application/activity+json",
+      "href": "https://c.im/users/lok"
+    }
+  ]
+}
