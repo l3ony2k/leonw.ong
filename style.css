@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+#background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Behind everything */
+    object-fit: cover;
+    background: url('images/poster_frame_bw.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.video-overlay {
+    position: fixed; /* Cover the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Transparent Black Background */
+    background-color: rgba(0, 0, 0, 0.1); /* Black at 50% opacity - adjust 0.5 as needed */
+    /* Backdrop Blur Filter */
+    -webkit-backdrop-filter: blur(5px); /* Safari */
+    backdrop-filter: blur(5px); /* Standard - adjust 8px blur amount as needed */
+    /* Ensure it's above the video (-1) but below potential content */
+    z-index: 0;
+}
+
+/* Optional: Styling for content placed over the video AND overlay */
+
+.content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding-top: 40vh;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
