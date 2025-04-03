@@ -1,186 +1,376 @@
+:root {
+  --bg-color: #f0f0f0;
+  --text-color: #333;
+  --block-bg: #fff;
+  --block-border: #333;
+  --header-bg: #f0f0f0;
+  --header-border: #333;
+  --button-bg: #ddd;
+  --button-hover: #ccc;
+  --detail-bg: #fff;
+  --detail-header-bg: #f0f0f0;
+  --detail-meta-bg: #fafafa;
+  --detail-border: #333;
+  --log-bg: #333;
+  --log-text: #f0f0f0;
+  --loading-bg: #ddd;
+  --loading-bar: #333;
+  --link-color: #0077cc;
+  --icon-color: #333;
+  --channel-block-border: #0077cc;
+  --channel-block-text: #0077cc;
+  --video-overlay-bg: rgba(255, 255, 255, 0.2);
+  --modal-bg: rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="system"] {
+    --bg-color: #111;
+    --text-color: #f0f0f0;
+    --block-bg: #2a2a2a;
+    --block-border: #555;
+    --header-bg: #1a1a1a;
+    --header-border: #444;
+    --button-bg: #333;
+    --button-hover: #444;
+    --detail-bg: #1a1a1a;
+    --detail-header-bg: #222;
+    --detail-meta-bg: #2a2a2a;
+    --detail-border: #444;
+    --log-bg: #1a1a1a;
+    --log-text: #f0f0f0;
+    --loading-bg: #111;
+    --loading-bar: #1a1a1a;
+    --link-color: #66b3ff;
+    --icon-color: #f0f0f0;
+    --channel-block-border: #66b3ff;
+    --channel-block-text: #66b3ff;
+    --video-overlay-bg: rgba(0, 0, 0, 0.2);
+    --modal-bg: rgba(0, 0, 0, 0.7);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg-color: #111111;
+  --text-color: #f0f0f0;
+  --block-bg: #2a2a2a;
+  --block-border: #555;
+  --header-bg: #1a1a1a;
+  --header-border: #444;
+  --button-bg: #333;
+  --button-hover: #444;
+  --detail-bg: #1a1a1a;
+  --detail-header-bg: #222;
+  --detail-meta-bg: #2a2a2a;
+  --detail-border: #444;
+  --log-bg: #1a1a1a;
+  --log-text: #f0f0f0;
+  --loading-bg: #222;
+  --loading-bar: #444;
+  --link-color: #66b3ff;
+  --icon-color: #f0f0f0;
+  --channel-block-border: #66b3ff;
+  --channel-block-text: #66b3ff;
+  --video-overlay-bg: rgba(0, 0, 0, 0.2);
+  --modal-bg: rgba(0, 0, 0, 0.7);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    overflow: hidden;
-    font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Mono", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Consolas", "Courier New", monospace;
+  font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Mono", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Consolas", "Courier New", monospace;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow: hidden;
+  background-image: radial-gradient(circle, var(--block-border) 1px, transparent 1px);
+  background-size: 20px 20px;
+  user-select: none;
+  margin: 0;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--link-color);
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 #background-video {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1; /* Behind everything */
-    object-fit: cover;
-    background: url('images/poster_frame.jpg') no-repeat center center fixed;
-    background-size: cover;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1; /* Behind everything */
+  object-fit: cover;
+  background: url('images/poster_frame.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .video-overlay {
-    position: fixed; /* Cover the viewport */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Transparent Black Background */
-    background-color: rgba(0, 0, 0, 0.0); /* Black at 50% opacity - adjust 0.5 as needed */
-    /* Backdrop Blur Filter */
-    -webkit-backdrop-filter: blur(5px); /* Safari */
-    backdrop-filter: blur(5px); /* Standard - adjust 8px blur amount as needed */
-    /* Ensure it's above the video (-1) but below potential content */
-    z-index: 0;
+  position: fixed; /* Cover the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--video-overlay-bg);
+  -webkit-backdrop-filter: blur(5px); /* Safari */
+  backdrop-filter: blur(5px);
+  z-index: 0;
 }
 
 /* Header content styling */
 .content {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px 20px;
-    box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  color: var(--text-color);
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  padding: 10px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
 }
 
 .content h1 {
-    margin: 0;
-    font-size: 24px;
+  margin: 0;
+  font-size: 24px;
+  font-weight: normal;
 }
 
 .content p {
-    margin: 5px 0 0 0;
-    font-size: 14px;
+  margin: 5px 0 0 0;
+  font-size: 14px;
 }
 
 /* Button container at the bottom */
 .btn-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px 20px;
-    box-sizing: border-box;
-    text-align: left; /* Changed from center to left */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: var(--header-bg);
+  border-top: 1px solid var(--header-border);
+  padding: 10px 20px;
+  box-sizing: border-box;
+  text-align: left;
 }
 
 /* Button styling */
 .btn {
-    display: inline-block;
-    cursor: pointer;
-    margin: 0 5px;
-    padding: 5px 10px;
-    color: white;
-    border: 1px solid white;
-    background-color: transparent;
-    /* font-family: 'Courier New', monospace; */
-    font-size: 14px;
-    /* Make text unselectable */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0 5px 0 0;
+  padding: 5px 10px;
+  color: var(--text-color);
+  background-color: var(--button-bg);
+  border: 1px solid var(--block-border);
+  font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Mono", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Consolas", "Courier New", monospace;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: all 0.2s ease;
+  height: 24px;
+  min-width: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--button-hover);
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  height: 24px;
+  padding: 0 5px;
+  background-color: var(--button-bg);
+  border: 1px solid var(--block-border);
+  color: var(--text-color);
+  cursor: pointer;
+  font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Mono", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Consolas", "Courier New", monospace;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  width: 70px; /* Fixed width to accommodate text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  text-transform: lowercase; /* Ensure consistent casing */
+}
+
+#theme-toggle:hover {
+  background-color: var(--button-hover);
 }
 
 /* Content sections */
 .content-section {
-    display: none;
-    position: fixed;
-    z-index: 2;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 400px;
-    width: 80%;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    border: 1px solid white;
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  width: 80%;
+  background-color: var(--detail-bg);
+  color: var(--text-color);
+  border: 3px solid var(--detail-border);
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
 }
 
 /* Wider iframe modals */
 .iframe-modal {
-    max-width: none; /* Remove max width constraint */
-    width: min(1000px, 85%); /* Much wider with reasonable maximum */
+  max-width: none;
+  width: min(800px, 85%);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent content from exceeding modal boundaries */
 }
 
 /* Menu style content (lists) */
 .content-section ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .content-section ul li {
-    padding: 8px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .content-section ul li:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .content-section ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
+  color: var(--link-color);
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
 }
 
 .content-section ul li a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+
+/* Modal header styling */
+.modal-header {
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--detail-border);
+  background-color: var(--detail-header-bg);
+  position: sticky;
+  top: 0;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.close-btn {
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--icon-color);
+  background: none;
+  border: none;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.close-btn:hover {
+  opacity: 0.7;
 }
 
 /* Modal style content (iframes) */
 .iframe-container {
-    padding: 10px;
-    position: relative;
+  padding: 10px;
+  position: relative;
+  flex-grow: 1;
+  overflow: hidden;
+  max-height: calc(90vh - 50px); /* Maximum height accounting for header */
 }
 
 .iframe-container iframe {
-    width: 100%;
-    height: 70vh; /* 70% of viewport height */
+  width: 100%;
+  height: 70vh;
+  max-height: 100%; /* Ensure iframe doesn't exceed container */
+  border: 0;
 }
 
 /* Responsive adjustments for different screen sizes */
 @media (max-height: 600px) {
-    .iframe-container iframe {
-        height: 80vh; /* For smaller screens, use more vertical space */
-    }
-}
-
-.modal-header {
-    padding: 5px 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.modal-title {
-    margin: 0;
-    font-size: 16px;
-}
-
-.close-btn {
-    cursor: pointer;
-    font-size: 20px;
-    color: white;
-    background: none;
-    border: none;
-    padding: 0;
+  .iframe-container {
+    max-height: calc(80vh - 50px); /* Adjusted for smaller screens */
+  }
+  
+  .iframe-container iframe {
+    height: 70vh; /* Reduced from 80vh to prevent overflow */
+    max-height: 100%;
+  }
+  
+  .iframe-modal {
+    max-height: 80vh; /* Smaller modal on smaller screens */
+  }
 }
 
 /* Media query for better mobile experience */
 @media (max-width: 600px) {
-    .content-section {
-        width: 95%;
-    }
+  .content-section {
+    width: 95%;
+  }
+  
+  .content h1 {
+    font-size: 20px;
+  }
+  
+  .content p {
+    font-size: 12px;
+  }
+  
+  .btn, #theme-toggle {
+    height: 32px;
+    min-width: 32px;
+    padding: 0 12px;
+    font-size: 14px;
+  }
+  
+  .modal-title {
+    font-size: 14px;
+  }
+  
+  .content-section ul li a {
+    font-size: 12px;
+  }
 }

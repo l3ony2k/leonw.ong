@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeSite() {
+  // Initialize theme from localStorage or system preference
+  initializeTheme();
+  
   // Generate profile content
   generateProfile();
   
@@ -14,8 +17,58 @@ function initializeSite() {
   // Generate content sections
   generateContentSections();
   
+  // Add theme toggle button
+  addThemeToggleButton();
+  
   // Set up event listeners
   setupEventListeners();
+}
+
+// Initialize theme based on localStorage or system preference
+function initializeTheme() {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }
+}
+
+// Add theme toggle button
+function addThemeToggleButton() {
+  const buttonContainer = document.getElementById('button-container');
+  
+  const themeToggle = document.createElement('button');
+  themeToggle.id = 'theme-toggle';
+  
+  // Get initial theme
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'system';
+  themeToggle.textContent = currentTheme;
+  
+  themeToggle.addEventListener('click', function() {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'system';
+    let newTheme;
+    
+    // Rotate through themes: system -> light -> dark -> system
+    switch (currentTheme) {
+      case 'system':
+        newTheme = 'light';
+        break;
+      case 'light':
+        newTheme = 'dark';
+        break;
+      case 'dark':
+        newTheme = 'system';
+        break;
+      default:
+        newTheme = 'system';
+    }
+    
+    // Update theme and button text
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    themeToggle.textContent = newTheme;
+  });
+  
+  buttonContainer.appendChild(themeToggle);
 }
 
 // Generate profile content in the header
@@ -37,7 +90,6 @@ function generateProfile() {
 // Generate buttons based on config
 function generateButtons() {
   const buttonContainer = document.getElementById('button-container');
-  const buttonWrapper = document.createElement('p');
   
   // Create buttons based on config
   siteConfig.buttons.forEach(button => {
@@ -46,10 +98,8 @@ function generateButtons() {
     buttonElement.setAttribute('data-target', `${button.id}-content`);
     buttonElement.textContent = button.label;
     
-    buttonWrapper.appendChild(buttonElement);
+    buttonContainer.appendChild(buttonElement);
   });
-  
-  buttonContainer.appendChild(buttonWrapper);
 }
 
 // Generate content sections based on config
@@ -61,10 +111,14 @@ function generateContentSections() {
     // Create content section wrapper
     const sectionElement = document.createElement('div');
     sectionElement.id = `${button.id}-content`;
+    sectionElement.style.display = 'none'; // Ensure all sections are hidden by default
     
     // Add appropriate class based on type
-    sectionElement.className = button.type === 'iframe' ? 
-      'content-section iframe-modal' : 'content-section';
+    if (button.type === 'iframe') {
+      sectionElement.className = 'content-section iframe-modal';
+    } else {
+      sectionElement.className = 'content-section';
+    }
     
     // Create header
     const headerElement = document.createElement('div');
@@ -112,11 +166,7 @@ function generateContentSections() {
       // Create iframe
       const iframe = document.createElement('iframe');
       iframe.src = button.iframe.src;
-      iframe.width = button.iframe.width;
-      // Height is now controlled by CSS
-      if (button.iframe.height) {
-        iframe.height = button.iframe.height;
-      }
+      iframe.width = button.iframe.width || '100%';
       iframe.frameBorder = '0';
       
       iframeContainer.appendChild(iframe);
