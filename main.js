@@ -91,6 +91,10 @@ function generateProfile() {
 function generateButtons() {
   const buttonContainer = document.getElementById('button-container');
   
+  // Create a container for the left-side buttons
+  const buttonsLeft = document.createElement('div');
+  buttonsLeft.className = 'buttons-left';
+  
   // Create buttons based on config
   siteConfig.buttons.forEach(button => {
     const buttonElement = document.createElement('span');
@@ -98,8 +102,11 @@ function generateButtons() {
     buttonElement.setAttribute('data-target', `${button.id}-content`);
     buttonElement.textContent = button.label;
     
-    buttonContainer.appendChild(buttonElement);
+    buttonsLeft.appendChild(buttonElement);
   });
+  
+  // Add the buttons-left container to the main button container
+  buttonContainer.appendChild(buttonsLeft);
 }
 
 // Generate content sections based on config
