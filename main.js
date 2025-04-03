@@ -61,7 +61,10 @@ function generateContentSections() {
     // Create content section wrapper
     const sectionElement = document.createElement('div');
     sectionElement.id = `${button.id}-content`;
-    sectionElement.className = 'content-section';
+    
+    // Add appropriate class based on type
+    sectionElement.className = button.type === 'iframe' ? 
+      'content-section iframe-modal' : 'content-section';
     
     // Create header
     const headerElement = document.createElement('div');
@@ -110,7 +113,10 @@ function generateContentSections() {
       const iframe = document.createElement('iframe');
       iframe.src = button.iframe.src;
       iframe.width = button.iframe.width;
-      iframe.height = button.iframe.height;
+      // Height is now controlled by CSS
+      if (button.iframe.height) {
+        iframe.height = button.iframe.height;
+      }
       iframe.frameBorder = '0';
       
       iframeContainer.appendChild(iframe);

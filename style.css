@@ -1,7 +1,7 @@
 body {
     margin: 0;
     overflow: hidden;
-    font-family: 'Courier New', monospace;
+    font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Mono", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Consolas", "Courier New", monospace;
 }
 
 #background-video {
@@ -66,7 +66,7 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 10px 20px;
     box-sizing: border-box;
-    text-align: center;
+    text-align: left; /* Changed from center to left */
 }
 
 /* Button styling */
@@ -78,8 +78,13 @@ body {
     color: white;
     border: 1px solid white;
     background-color: transparent;
-    font-family: 'Courier New', monospace;
+    /* font-family: 'Courier New', monospace; */
     font-size: 14px;
+    /* Make text unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .btn:hover {
@@ -99,6 +104,12 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     border: 1px solid white;
+}
+
+/* Wider iframe modals */
+.iframe-modal {
+    max-width: none; /* Remove max width constraint */
+    width: min(1000px, 85%); /* Much wider with reasonable maximum */
 }
 
 /* Menu style content (lists) */
@@ -131,6 +142,18 @@ body {
 .iframe-container {
     padding: 10px;
     position: relative;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    height: 70vh; /* 70% of viewport height */
+}
+
+/* Responsive adjustments for different screen sizes */
+@media (max-height: 600px) {
+    .iframe-container iframe {
+        height: 80vh; /* For smaller screens, use more vertical space */
+    }
 }
 
 .modal-header {

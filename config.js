@@ -38,9 +38,9 @@ const siteConfig = {
       type: "iframe",
       title: "Mail",
       iframe: {
-        src: "https://letterbird.co/embed?username=lok",
-        width: "100%",
-        height: 300
+        src: "https://letterbird.co/lok",
+        width: "100%"
+        // Height is now controlled by CSS
       }
     },
     {
@@ -60,8 +60,8 @@ const siteConfig = {
       title: "Whiteboard",
       iframe: {
         src: "https://kinopio.club/embed/?spaceId=WxFUq5kPNkJ0gFgapKSGk&zoom=69",
-        width: "100%",
-        height: 400
+        width: "100%"
+        // Height is now controlled by CSS
       }
     }
   ]
