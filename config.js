@@ -15,9 +15,10 @@ const siteConfig = {
       links: [
         { text: "are.na", url: "https://are.na/lok" },
         { text: "omg.lol", url: "https://omg.lol/lok" },
-        { text: "sourcehut", url: "https://sourcehut.org/lok" },
+        { text: "sourcehut", url: "https://sr.ht/~lok" },
         { text: "special.fish", url: "https://special.fish/lok" },
-        { text: "neodb", url: "https://neodb.social/lok" }
+        { text: "neodb", url: "https://neodb.social/users/lok" },
+        { text: "signal", url: "https://signal.me/#eu/8Q-JFgLhjGbsPSfgMHep65NmUJNKxTr1uyO-arsGq6AUf2ZaxrtPHY4WLiLrwm9D"}
       ]
     },
     {
@@ -42,16 +43,6 @@ const siteConfig = {
         width: "100%"
         // Height is now controlled by CSS
       }
-    },
-    {
-      id: "dm",
-      label: "dm",
-      type: "links",
-      title: "Direct Messages",
-      links: [
-        { text: "signal", url: "https://signal.me/#p/+123456789" },
-        { text: "whatsapp", url: "https://wa.me/123456789" }
-      ]
     },
     {
       id: "whiteboard",

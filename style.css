@@ -19,7 +19,7 @@
   --icon-color: #333;
   --channel-block-border: #0077cc;
   --channel-block-text: #0077cc;
-  --video-overlay-bg: rgba(255, 255, 255, 0.2);
+  --video-overlay-bg: rgba(240, 240, 240, 0.5);
   --modal-bg: rgba(0, 0, 0, 0.5);
 }
 
@@ -139,7 +139,7 @@ a:hover {
   color: var(--text-color);
   background-color: var(--header-bg);
   border-bottom: 1px solid var(--header-border);
-  padding: 10px 20px;
+  padding: 5px 10px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -166,7 +166,7 @@ a:hover {
   z-index: 1;
   background-color: var(--header-bg);
   border-top: 1px solid var(--header-border);
-  padding: 10px 20px;
+  padding: 5px 10px;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -200,7 +200,6 @@ a:hover {
   flex-wrap: nowrap;
   overflow-x: auto;
   gap: 5px;
-  padding-bottom: 5px; /* Add padding to ensure no cutoff */
   scroll-behavior: smooth; /* For smoother scrolling */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
@@ -216,7 +215,7 @@ a:hover {
   display: inline-flex;
   cursor: pointer;
   margin: 0 5px 0 0;
-  padding: 5px 12px;
+  padding: 0 5px;
   color: var(--text-color);
   background-color: var(--button-bg);
   border: 1px solid var(--block-border);
@@ -295,13 +294,13 @@ a:hover {
 /* Menu style content (lists) */
 .content-section ul {
   list-style-type: none;
-  padding: 0;
+  padding: 5px 0;
   margin: 0;
 }
 
 .content-section ul li {
   padding: 8px 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
 }
 
 .content-section ul li:last-child {
