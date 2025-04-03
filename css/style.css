@@ -164,6 +164,11 @@ a:hover {
   justify-content: space-between;
 }
 
+.profile-name {
+  font-weight: 600;
+  font-size: 18px;
+}
+
 /* Button container at the bottom */
 .btn-container {
   position: fixed;
@@ -339,7 +344,7 @@ a:hover {
   color: var(--link-color);
   text-decoration: none;
   display: block;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .content-section ul li a:hover {
@@ -359,10 +364,19 @@ a:hover {
 }
 
 .modal-title {
+  font-size: 1.25em;
+  font-weight: bold;
   margin: 0;
-  font-size: 16px;
-  font-weight: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 75%;
 }
+/* .modal-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+} */
 
 .close-btn {
   cursor: pointer;
