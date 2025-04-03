@@ -75,16 +75,72 @@ function addThemeToggleButton() {
 function generateProfile() {
   const profileContainer = document.getElementById('profile-container');
   
-  // Create and add profile elements
-  const nameElement = document.createElement('h1');
-  nameElement.textContent = siteConfig.profile.name;
+  // Set the profile container to flex layout
+  // profileContainer.style.display = 'flex';
+  // profileContainer.style.justifyContent = 'space-between';
+  // profileContainer.style.alignItems = 'center';
   
-  const bioElement = document.createElement('p');
-  bioElement.textContent = siteConfig.profile.bio;
+  // Create and add profile name as regular text
+  const nameElement = document.createElement('div');
+  nameElement.textContent = siteConfig.profile.name;
+  nameElement.className = 'profile-name';
+  
+  // Create about button
+  const aboutButton = document.createElement('span');
+  aboutButton.className = 'btn';
+  aboutButton.setAttribute('data-target', 'about-content');
+  aboutButton.textContent = 'about';
   
   // Append elements to profile container
   profileContainer.appendChild(nameElement);
-  profileContainer.appendChild(bioElement);
+  profileContainer.appendChild(aboutButton);
+  
+  // Generate the about content section
+  generateAboutSection();
+}
+
+// Generate the about section modal
+function generateAboutSection() {
+  const contentContainer = document.getElementById('content-container');
+  
+  // Create content section wrapper
+  const sectionElement = document.createElement('div');
+  sectionElement.id = 'about-content';
+  sectionElement.style.display = 'none';
+  sectionElement.className = 'content-section about-modal';
+  
+  // Create header
+  const headerElement = document.createElement('div');
+  headerElement.className = 'modal-header';
+  
+  // Add title
+  const titleElement = document.createElement('h3');
+  titleElement.className = 'modal-title';
+  titleElement.textContent = siteConfig.about.title;
+  headerElement.appendChild(titleElement);
+  
+  // Add close button
+  const closeButton = document.createElement('button');
+  closeButton.className = 'close-btn';
+  closeButton.setAttribute('data-target', 'about-content');
+  closeButton.textContent = '×';
+  headerElement.appendChild(closeButton);
+  
+  // Add header to section
+  sectionElement.appendChild(headerElement);
+  
+  // Create and add content container
+  const contentElement = document.createElement('div');
+  contentElement.className = 'about-content';
+  contentElement.style.padding = '15px';
+  
+  // Use innerHTML to allow HTML content
+  contentElement.innerHTML = siteConfig.about.content;
+  
+  sectionElement.appendChild(contentElement);
+  
+  // Add the about section to the content container
+  contentContainer.appendChild(sectionElement);
 }
 
 // Generate buttons based on config

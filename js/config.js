@@ -1,8 +1,19 @@
 const siteConfig = {
   // Personal information
   profile: {
-    name: "leonw.ong",
-    bio: "Live to the point of tears."
+    name: "leonw.ong"
+  },
+  
+  // About section with HTML content support
+  about: {
+    title: "About",
+    content: `
+      <p>Live to the point of tears.</p>
+      <!-- Can include any HTML here -->
+      <p>this is a test paragraph. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.</p>  
+      <p>Lorem ipsum this is a test paragraph. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.</p>  
+      <p>There are <span class="tinylytics_hits"></span> views on this page now. You can wave and say hi here <button class="tinylytics_kudos"></button></p>
+    `
   },
   
   // Button configurations

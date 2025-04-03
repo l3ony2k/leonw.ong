@@ -113,7 +113,7 @@ a:hover {
   height: auto;
   z-index: -1; /* Behind everything */
   object-fit: cover;
-  background: url('images/poster_frame.jpg') no-repeat center center fixed;
+  background: url('/images/poster_frame.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -141,12 +141,12 @@ a:hover {
   border-bottom: 1px solid var(--header-border);
   padding: 5px 10px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   font-size: 14px;
 }
 
-.content h1 {
+/* .content h1 {
   margin: 0;
   font-size: 24px;
   font-weight: normal;
@@ -155,6 +155,13 @@ a:hover {
 .content p {
   margin: 5px 0 0 0;
   font-size: 14px;
+} */
+
+#profile-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 /* Button container at the bottom */
@@ -289,6 +296,26 @@ a:hover {
   display: flex;
   flex-direction: column;
   overflow: hidden; /* Prevent content from exceeding modal boundaries */
+}
+
+/* About modal styling */
+.about-modal {
+  max-width: 500px; /* Slightly larger than regular content section */
+  width: 85%;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.about-content {
+  line-height: 1.5;
+}
+
+.about-content p {
+  margin-bottom: 12px;
+}
+
+.about-content ul {
+  padding-left: 20px;
 }
 
 /* Menu style content (lists) */
