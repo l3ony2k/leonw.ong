@@ -221,7 +221,6 @@ a:hover {
 .btn {
   display: inline-flex;
   cursor: pointer;
-  margin: 0 5px 0 0;
   padding: 0 5px;
   color: var(--text-color);
   background-color: var(--button-bg);
@@ -307,7 +306,9 @@ a:hover {
 }
 
 .about-content {
+  font-size: 16px;
   line-height: 1.5;
+  padding: 0 15px;
 }
 
 .about-content p {
@@ -446,4 +447,12 @@ a:hover {
   .content-section ul li a {
     font-size: 12px;
   }
+}
+
+button.tinylytics_kudos.did_select {
+  border-radius: 0 !important;
+  color: var(--text-color);
+  background: var(--button-bg);
+  border: 1px solid var(--block-border);
+  font-family: monospace;
 }

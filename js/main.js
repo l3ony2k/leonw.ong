@@ -1,3 +1,14 @@
+// Load Tinylytics script function
+function loadTinylyticsScript() {
+  // Check if the script already exists to prevent duplicate loading
+  if (!document.querySelector('script[src*="tinylytics.app/embed"]')) {
+    const script = document.createElement('script');
+    script.src = 'https://tinylytics.app/embed/SsEsEjyyoeL_2FbCdwC5.js?kudos&hits&countries';
+    document.head.appendChild(script);
+    console.log('Tinylytics script loaded');
+  }
+}
+
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize the site
@@ -22,6 +33,15 @@ function initializeSite() {
   
   // Set up event listeners
   setupEventListeners();
+  
+  // Show about modal by default and load Tinylytics
+  setTimeout(() => {
+    const aboutContent = document.getElementById('about-content');
+    if (aboutContent) {
+      aboutContent.style.display = 'block';
+      loadTinylyticsScript();
+    }
+  }, 500); // Small delay to ensure DOM is fully ready
 }
 
 // Initialize theme based on localStorage or system preference
@@ -76,9 +96,9 @@ function generateProfile() {
   const profileContainer = document.getElementById('profile-container');
   
   // Set the profile container to flex layout
-  // profileContainer.style.display = 'flex';
-  // profileContainer.style.justifyContent = 'space-between';
-  // profileContainer.style.alignItems = 'center';
+  profileContainer.style.display = 'flex';
+  profileContainer.style.justifyContent = 'space-between';
+  profileContainer.style.alignItems = 'center';
   
   // Create and add profile name as regular text
   const nameElement = document.createElement('div');
@@ -132,7 +152,7 @@ function generateAboutSection() {
   // Create and add content container
   const contentElement = document.createElement('div');
   contentElement.className = 'about-content';
-  contentElement.style.padding = '15px';
+  // contentElement.style.padding = '15px';
   
   // Use innerHTML to allow HTML content
   contentElement.innerHTML = siteConfig.about.content;
@@ -265,6 +285,11 @@ function setupEventListeners() {
       // If the clicked content wasn't already visible, show it
       if (!isVisible) {
         targetContent.style.display = 'block';
+        
+        // If this is the about content, load the Tinylytics script
+        if (targetId === 'about-content') {
+          loadTinylyticsScript();
+        }
       }
       // If it was visible, it will remain hidden (toggle behavior)
     });
@@ -305,6 +330,11 @@ function setupButtonListener(button) {
       
       if (!isVisible) {
         targetContent.style.display = 'block';
+        
+        // If this is the about content, load the Tinylytics script
+        if (targetId === 'about-content') {
+          loadTinylyticsScript();
+        }
       }
     });
   } else if (button.classList.contains('close-btn')) {

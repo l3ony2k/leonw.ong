@@ -8,11 +8,18 @@ const siteConfig = {
   about: {
     title: "About",
     content: `
-      <p>Live to the point of tears.</p>
-      <!-- Can include any HTML here -->
-      <p>this is a test paragraph. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.</p>  
-      <p>Lorem ipsum this is a test paragraph. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.</p>  
-      <p>There are <span class="tinylytics_hits"></span> views on this page now. You can wave and say hi here <button class="tinylytics_kudos"></button></p>
+      <p style="padding: 0px 15px; border-left: 2px solid; font-family: 'Times New Roman', serif; font-style: italic; font-size: 20px;">
+        “Men must live and create. Live to the point of tears.” – Albert Camus
+      </p>
+      <p>
+        Hello there, and welcome! I'm Leon / Lok, a curious soul who finds joy in exploring every corner of the web. I'm not a designer or developer, I just love creating and tinkering digital / physical things.
+      </p>
+      <p>
+        This is my personal space, not much going on here, but still feel free to wander through and poke around. Every visit inspires me, and I hope you feel just as welcomed here.
+      </p>
+      <p>
+        There are <span class="tinylytics_hits">00</span> views on this page so far, and you can click the button below to send some positive vibes my way. <button class="tinylytics_kudos">👋00</button>
+      </p>
     `
   },
   
