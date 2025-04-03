@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Background</title>
+    <title>Leon Wong</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <video id="background-video" autoplay loop muted playsinline poster="images/poster_frame_bw.jpg">
-        <!-- Preferred: B&W H.265/HEVC -->
+    <video id="background-video" autoplay loop muted playsinline poster="images/poster_frame.jpg">
+        <!-- Preferred: H.265/HEVC -->
         <source src="videos/output_720p_1.5x_grain_cq32.mp4" type="video/mp4; codecs=hvc1">
 
-        <!-- Fallback: B&W H.264/AVC -->
+        <!-- Fallback: H.264/AVC -->
         <source src="videos/output_720p_1.5x_grain_nvenc_h264.mp4" type="video/mp4">
 
         <!-- Fallback text if video tag is not supported -->
@@ -22,11 +22,13 @@
     <!-- The overlay element -->
     <div class="video-overlay"></div>
 
-    <!-- Optional content (must have higher z-index than overlay) -->
-    <div class="content">
-        <h1>Website Title</h1>
-        <p>Some text over the video.</p>
-    </div>
-
+    <!-- These containers will be populated by JavaScript -->
+    <div id="profile-container" class="content"></div>
+    <div id="button-container" class="btn-container"></div>
+    <div id="content-container"></div>
+    
+    <!-- Load configuration first, then main JS -->
+    <script src="config.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
