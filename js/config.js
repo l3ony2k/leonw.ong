@@ -33,8 +33,9 @@ const siteConfig = {
       links: [
         { text: "are.na", url: "https://are.na/lok" },
         { text: "omg.lol", url: "https://omg.lol/lok" },
-        { text: "sourcehut", url: "https://sr.ht/~lok" },
         { text: "special.fish", url: "https://special.fish/lok" },
+        { text: "sourcehut", url: "https://sr.ht/~lok" },
+        { text: "nekoweb", url: "https://lok.nekoweb.org"},
         { text: "neodb", url: "https://neodb.social/users/lok" },
         { text: "signal", url: "https://signal.me/#eu/8Q-JFgLhjGbsPSfgMHep65NmUJNKxTr1uyO-arsGq6AUf2ZaxrtPHY4WLiLrwm9D"}
       ]
@@ -63,12 +64,23 @@ const siteConfig = {
       }
     },
     {
-      id: "whiteboard",
-      label: "whiteboard",
+      id: "kinopio",
+      label: "kinopio",
       type: "iframe",
-      title: "Whiteboard",
+      title: "Kinopio",
       iframe: {
         src: "https://kinopio.club/embed/?spaceId=WxFUq5kPNkJ0gFgapKSGk&zoom=69",
+        width: "100%"
+        // Height is now controlled by CSS
+      }
+    },
+    {
+      id: "blog",
+      label: "blog",
+      type: "iframe",
+      title: "Blog",
+      iframe: {
+        src: "https://l3on.site/",
         width: "100%"
         // Height is now controlled by CSS
       }

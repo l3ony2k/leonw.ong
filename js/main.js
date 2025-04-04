@@ -101,8 +101,41 @@ function generateProfile() {
   profileContainer.style.alignItems = 'center';
   
   // Create and add profile name as regular text
-  const nameElement = document.createElement('div');
+  const nameElement = document.createElement('span');
   nameElement.textContent = siteConfig.profile.name;
+  
+  // Create and add the Bsky link
+  const linkElement = document.createElement('a'); // Create the link element
+  linkElement.href = 'https://bsky.app/profile/did:plc:2p3gp2g2teuwpuv4skhiik3i'; // Set the href
+  linkElement.target = '_blank'; // Set the target to open in a new tab
+  linkElement.style.marginLeft = '5px'; // Add some left margin
+  linkElement.style.textDecoration = 'none'; // Remove text decoration
+  linkElement.title = "Bluesky"; // Set the title for hover
+  
+  // Create the Bsky SVG element
+  const svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svgElement.setAttribute('viewBox', '0 0 600 530'); // Set the viewBox to match the path dimensions
+  svgElement.setAttribute('width', '18'); // Set the width to match the text size
+  svgElement.setAttribute('height', '16'); // Set the height to match the text size
+  svgElement.style.fill = 'var(--text-color)'; // Set the fill color to the current text color
+  svgElement.style.verticalAlign = 'middle'; // Align the SVG vertically with the text
+  svgElement.innerHTML = '<path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>'; // Add the path for the icon
+  
+  // Add hover effect to change the fill color
+  svgElement.addEventListener('mouseover', function() {
+    svgElement.style.fill = '#1185fe'; // Change to a different color on hover
+  });
+  
+  svgElement.addEventListener('mouseout', function() {
+    svgElement.style.fill = 'var(--text-color)'; // Revert to the original color on mouse out
+  });
+  
+  // Append the SVG to the link
+  linkElement.appendChild(svgElement);
+  
+  
+  // Append the link to the name element
+  nameElement.appendChild(linkElement);
   nameElement.className = 'profile-name';
   
   // Create about button
@@ -207,11 +240,32 @@ function generateContentSections() {
     const headerElement = document.createElement('div');
     headerElement.className = 'modal-header';
     
-    // Add title
+    // Create a container for title and arrow button
+    const titleContainer = document.createElement('div');
+    titleContainer.className = 'title-container';
+    
+    // Add title to the container
     const titleElement = document.createElement('h3');
     titleElement.className = 'modal-title';
     titleElement.textContent = button.title;
-    headerElement.appendChild(titleElement);
+    titleContainer.appendChild(titleElement);
+    
+    // Add open-in-new-tab button for iframe modals
+    if (button.type === 'iframe') {
+      const openInNewTabButton = document.createElement('button');
+      openInNewTabButton.className = 'open-in-new-tab-btn';
+      openInNewTabButton.textContent = '→';
+      openInNewTabButton.addEventListener('click', function(e) {
+        // Prevent event from bubbling up to parent elements
+        e.stopPropagation();
+        // Open iframe URL in a new tab
+        window.open(button.iframe.src, '_blank');
+      });
+      titleContainer.appendChild(openInNewTabButton);
+    }
+    
+    // Add title container to header
+    headerElement.appendChild(titleContainer);
     
     // Add close button
     const closeButton = document.createElement('button');
@@ -246,9 +300,10 @@ function generateContentSections() {
       const iframeContainer = document.createElement('div');
       iframeContainer.className = 'iframe-container';
       
-      // Create iframe
+      // Create iframe with lazy loading
       const iframe = document.createElement('iframe');
-      iframe.src = button.iframe.src;
+      iframe.setAttribute('data-src', button.iframe.src); // Store URL in data attribute
+      iframe.src = 'about:blank'; // Empty initial source
       iframe.width = button.iframe.width || '100%';
       iframe.frameBorder = '0';
       
@@ -285,6 +340,12 @@ function setupEventListeners() {
       // If the clicked content wasn't already visible, show it
       if (!isVisible) {
         targetContent.style.display = 'block';
+        
+        // Check if this section contains an iframe and load it if needed
+        const iframe = targetContent.querySelector('iframe');
+        if (iframe && iframe.hasAttribute('data-src') && iframe.src === 'about:blank') {
+          iframe.src = iframe.getAttribute('data-src');
+        }
         
         // If this is the about content, load the Tinylytics script
         if (targetId === 'about-content') {
@@ -330,6 +391,12 @@ function setupButtonListener(button) {
       
       if (!isVisible) {
         targetContent.style.display = 'block';
+        
+        // Check if this section contains an iframe and load it if needed
+        const iframe = targetContent.querySelector('iframe');
+        if (iframe && iframe.hasAttribute('data-src') && iframe.src === 'about:blank') {
+          iframe.src = iframe.getAttribute('data-src');
+        }
         
         // If this is the about content, load the Tinylytics script
         if (targetId === 'about-content') {
