@@ -463,10 +463,19 @@ a:hover {
   }
 }
 
-button.tinylytics_kudos.did_select {
+button.tinylytics_kudos {
   border-radius: 0 !important;
   color: var(--text-color);
   background: var(--button-bg);
   border: 1px solid var(--block-border);
   font-family: monospace;
+  cursor: pointer;
+}
+
+button.tinylytics_kudos:hover {
+  background: var(--button-hover);
+}
+
+button.tinylytics_kudos.did_select {
+  background: var(--button-hover);
 }
