@@ -91,15 +91,16 @@ body {
 }
 
 a {
-  color: var(--link-color);
+  color: var(--text-color);
   text-decoration: none;
 }
 
-a:visited {
+/* a:visited {
   color: var(--link-color);
-}
+} */
 
 a:hover {
+  color: var(--link-color);
   text-decoration: underline;
 }
 
@@ -341,13 +342,14 @@ a:hover {
 }
 
 .content-section ul li a {
-  color: var(--link-color);
+  color: var(--text-color);
   text-decoration: none;
   display: block;
   font-size: 16px;
 }
 
 .content-section ul li a:hover {
+  color: var(--link-color);
   text-decoration: underline;
 }
 
@@ -494,7 +496,7 @@ button.tinylytics_kudos {
   color: var(--text-color);
   background: var(--button-bg);
   border: 1px solid var(--block-border);
-  font-family: monospace;
+  font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Mono", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Consolas", "Courier New", monospace;
   cursor: pointer;
 }
 
