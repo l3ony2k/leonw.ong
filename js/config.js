@@ -3,7 +3,7 @@ const siteConfig = {
   profile: {
     name: "leonw.ong"
   },
-  
+
   // About section with HTML content support
   about: {
     title: "About",
@@ -22,7 +22,7 @@ const siteConfig = {
       </p>
     `
   },
-  
+
   // Button configurations
   buttons: [
     {
@@ -31,14 +31,14 @@ const siteConfig = {
       type: "links",
       title: "@lok",
       links: [
-        { text: "bluesky", url: "https://lok.on.computer"},
+        { text: "bluesky", url: "https://lok.on.computer" },
         { text: "are.na", url: "https://are.na/lok" },
         { text: "omg.lol", url: "https://lok.omg.lol" },
         { text: "special.fish", url: "https://special.fish/lok" },
         { text: "sourcehut", url: "https://sr.ht/~lok" },
-        { text: "nekoweb", url: "https://lok.nekoweb.org"},
+        { text: "nekoweb", url: "https://lok.nekoweb.org" },
         { text: "neodb", url: "https://neodb.social/users/lok" },
-        { text: "signal: lok.96", url: "https://signal.me/#eu/8Q-JFgLhjGbsPSfgMHep65NmUJNKxTr1uyO-arsGq6AUf2ZaxrtPHY4WLiLrwm9D"}
+        { text: "signal: lok.96", url: "https://signal.me/#eu/8Q-JFgLhjGbsPSfgMHep65NmUJNKxTr1uyO-arsGq6AUf2ZaxrtPHY4WLiLrwm9D" }
       ]
     },
     {
@@ -51,8 +51,18 @@ const siteConfig = {
         { text: "twitter", url: "https://twitter.com/l3on_y2k" },
         { text: "reddit", url: "https://reddit.com/user/l3on_y2k" },
         { text: "telegram", url: "https://t.me/l3on_y2k" },
-        { text: "github", url: "https://github.com/l3ony2k"}
+        { text: "github", url: "https://github.com/l3ony2k" }
       ]
+    }, {
+      id: "projects",
+      label: "projects",
+      type: "iframe",
+      title: "Projects",
+      iframe: {
+        src: "https://www.are.na/lok/things-i-created/embed",
+        width: "100%"
+        // Height is now controlled by CSS
+      }
     },
     {
       id: "mail",
@@ -87,5 +97,6 @@ const siteConfig = {
         // Height is now controlled by CSS
       }
     }
+
   ]
 };
