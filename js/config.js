@@ -64,32 +64,32 @@ const siteConfig = {
       projects: [
         {
           id: "canvas-project",
-          title: "Canvas",
+          title: "are.na blocks canvas",
           description: "Interactive canvas for exploring are.na blocks with visual connections and relationships.",
           iframe: "https://abc.lok.computer",
           actions: [
             { text: "visit site", url: "https://abc.lok.computer" },
-            { text: "view repo", url: "https://github.com/your-repo" }
+            { text: "view repo", url: "https://github.com/l3ony2k/are.na-blocks-canvas" }
           ]
         },
         {
           id: "computer-project", 
-          title: "Computer",
+          title: "lok.computer",
           description: "Personal website and digital garden showcasing various projects and experiments.",
           iframe: "https://lok.computer",
           actions: [
             { text: "visit site", url: "https://lok.computer" },
-            { text: "view repo", url: "https://github.com/your-repo" }
+            { text: "view repo", url: "https://github.com/l3ony2k/lok.computer" }
           ]
         },
         {
           id: "feed-project",
-          title: "Feed", 
-          description: "Curated feed of are.na blocks presented in a journal-like format for discovery.",
+          title: "are.na blocks feed", 
+          description: "A minimalist thoughts feed that displays blocks from your Are.na channel, heavily inspired by thoughts.page.",
           iframe: "https://journal.lok.computer",
           actions: [
             { text: "visit site", url: "https://journal.lok.computer" },
-            { text: "view repo", url: "https://github.com/your-repo" }
+            { text: "view repo", url: "https://github.com/l3ony2k/are.na-blocks-feed" }
           ]
         }
       ]
