@@ -65,7 +65,7 @@ const siteConfig = {
         {
           id: "canvas-project",
           title: "are.na blocks canvas",
-          description: "Interactive canvas for exploring are.na blocks with visual connections and relationships.",
+          description: "A visual tool for exploring are.na blocks in a canvas interface. allows you to interact with are.na blocks in a more spatial and intuitive way.",
           iframe: "https://abc.lok.computer",
           actions: [
             { text: "visit site", url: "https://abc.lok.computer" },
@@ -75,7 +75,7 @@ const siteConfig = {
         {
           id: "computer-project", 
           title: "lok.computer",
-          description: "Personal website and digital garden showcasing various projects and experiments.",
+          description: "A mini desktop-like environment with modular apps including are.na browser, weather app, and more.",
           iframe: "https://lok.computer",
           actions: [
             { text: "visit site", url: "https://lok.computer" },
