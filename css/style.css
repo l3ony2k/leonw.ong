@@ -297,7 +297,7 @@ a:hover {
 .iframe-modal {
   max-width: none;
   width: 95vw;
-  max-height: 95vh;
+  max-height: 98vh; /* Increased from 95vh to 98vh for maximum height */
   display: flex;
   flex-direction: column;
   overflow: hidden; /* Prevent content from exceeding modal boundaries */
@@ -431,12 +431,12 @@ a:hover {
   position: relative;
   flex-grow: 1;
   overflow: hidden;
-  max-height: calc(95vh - 50px); /* Maximum height accounting for header */
+  max-height: calc(98vh - 40px); /* Updated to match new modal height */
 }
 
 .iframe-container iframe {
   width: 100%;
-  height: calc(95vh - 100px);
+  height: calc(98vh - 60px); /* Increased from 95vh to match new modal height */
   max-height: 100%; /* Ensure iframe doesn't exceed container */
   border: 0;
 }
@@ -444,16 +444,16 @@ a:hover {
 /* Responsive adjustments for different screen sizes */
 @media (max-height: 600px) {
   .iframe-container {
-    max-height: calc(80vh - 50px); /* Adjusted for smaller screens */
+    max-height: calc(90vh - 40px); /* Increased for more height on small screens */
   }
   
   .iframe-container iframe {
-    height: 70vh; /* Reduced from 80vh to prevent overflow */
+    height: 85vh; /* Increased from 70vh to 85vh for much more height */
     max-height: 100%;
   }
   
   .iframe-modal {
-    max-height: 80vh; /* Smaller modal on smaller screens */
+    max-height: 90vh; /* Increased from 80vh to 90vh */
   }
 }
 
@@ -607,7 +607,7 @@ button.tinylytics_kudos.did_select {
   width: 100%;
   flex: 1;
   border: 1px solid var(--detail-border);
-  min-height: 400px;
+  min-height: 600px; /* Increased from 400px to 600px for much more height */
 }
 
 /* Social content styling for two-column layout */
