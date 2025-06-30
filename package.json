@@ -1,0 +1,15 @@
+{
+  "name": "leonw-ong-site",
+  "version": "1.0.0",
+  "description": "Personal website with inlined CSS/JS deployed on Cloudflare Pages",
+  "scripts": {
+    "build": "node build.js",
+    "preview": "npm run build && wrangler pages dev dist",
+    "deploy": "npm run build && wrangler pages deploy dist"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  },
+  "author": "Leon Wong",
+  "license": "MIT"
+} 
