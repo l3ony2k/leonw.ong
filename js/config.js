@@ -26,43 +26,73 @@ const siteConfig = {
   // Button configurations
   buttons: [
     {
-      id: "lok",
-      label: "@lok",
-      type: "links",
-      title: "@lok",
-      links: [
-        { text: "bluesky", url: "https://lok.on.computer" },
-        { text: "are.na", url: "https://are.na/lok" },
-        { text: "omg.lol", url: "https://lok.omg.lol" },
-        { text: "special.fish", url: "https://special.fish/lok" },
-        { text: "sourcehut", url: "https://sr.ht/~lok" },
-        { text: "nekoweb", url: "https://lok.nekoweb.org" },
-        { text: "neodb", url: "https://neodb.social/users/lok" },
-        { text: "signal: lok.96", url: "https://signal.me/#eu/8Q-JFgLhjGbsPSfgMHep65NmUJNKxTr1uyO-arsGq6AUf2ZaxrtPHY4WLiLrwm9D" }
+      id: "social",
+      label: "social",
+      type: "social",
+      title: "Social",
+      socialColumns: [
+        {
+          title: "@lok",
+          links: [
+            { text: "bluesky", url: "https://lok.on.computer" },
+            { text: "are.na", url: "https://are.na/lok" },
+            { text: "omg.lol", url: "https://lok.omg.lol" },
+            { text: "special.fish", url: "https://special.fish/lok" },
+            { text: "sourcehut", url: "https://sr.ht/~lok" },
+            { text: "nekoweb", url: "https://lok.nekoweb.org" },
+            { text: "neodb", url: "https://neodb.social/users/lok" },
+            { text: "signal: lok.96", url: "https://signal.me/#eu/8Q-JFgLhjGbsPSfgMHep65NmUJNKxTr1uyO-arsGq6AUf2ZaxrtPHY4WLiLrwm9D" }
+          ]
+        },
+        {
+          title: "@l3on_y2k",
+          links: [
+            { text: "instagram", url: "https://instagram.com/l3on_y2k" },
+            { text: "twitter", url: "https://twitter.com/l3on_y2k" },
+            { text: "reddit", url: "https://reddit.com/user/l3on_y2k" },
+            { text: "telegram", url: "https://t.me/l3on_y2k" },
+            { text: "github", url: "https://github.com/l3ony2k" }
+          ]
+        }
       ]
     },
     {
-      id: "l3on",
-      label: "@l3on_y2k",
-      type: "links",
-      title: "@l3on_y2k",
-      links: [
-        { text: "instagram", url: "https://instagram.com/l3on_y2k" },
-        { text: "twitter", url: "https://twitter.com/l3on_y2k" },
-        { text: "reddit", url: "https://reddit.com/user/l3on_y2k" },
-        { text: "telegram", url: "https://t.me/l3on_y2k" },
-        { text: "github", url: "https://github.com/l3ony2k" }
-      ]
-    }, {
       id: "projects",
       label: "projects",
-      type: "iframe",
+      type: "projects",
       title: "Projects",
-      iframe: {
-        src: "https://www.are.na/lok/things-i-created/embed",
-        width: "100%"
-        // Height is now controlled by CSS
-      }
+      projects: [
+        {
+          id: "canvas-project",
+          title: "Canvas",
+          description: "Interactive canvas for exploring are.na blocks with visual connections and relationships.",
+          iframe: "https://abc.lok.computer",
+          actions: [
+            { text: "visit site", url: "https://abc.lok.computer" },
+            { text: "view repo", url: "https://github.com/your-repo" }
+          ]
+        },
+        {
+          id: "computer-project", 
+          title: "Computer",
+          description: "Personal website and digital garden showcasing various projects and experiments.",
+          iframe: "https://lok.computer",
+          actions: [
+            { text: "visit site", url: "https://lok.computer" },
+            { text: "view repo", url: "https://github.com/your-repo" }
+          ]
+        },
+        {
+          id: "feed-project",
+          title: "Feed", 
+          description: "Curated feed of are.na blocks presented in a journal-like format for discovery.",
+          iframe: "https://journal.lok.computer",
+          actions: [
+            { text: "visit site", url: "https://journal.lok.computer" },
+            { text: "view repo", url: "https://github.com/your-repo" }
+          ]
+        }
+      ]
     },
     {
       id: "mail",

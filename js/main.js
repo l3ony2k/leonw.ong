@@ -231,7 +231,7 @@ function generateContentSections() {
     sectionElement.style.display = 'none'; // Ensure all sections are hidden by default
     
     // Add appropriate class based on type
-    if (button.type === 'iframe') {
+    if (button.type === 'iframe' || button.type === 'projects') {
       sectionElement.className = 'content-section iframe-modal';
     } else {
       sectionElement.className = 'content-section';
@@ -251,7 +251,7 @@ function generateContentSections() {
     titleElement.textContent = button.title;
     titleContainer.appendChild(titleElement);
     
-    // Add open-in-new-tab button for iframe modals
+    // Add open-in-new-tab button for iframe modals (not for projects - they have their own action buttons)
     if (button.type === 'iframe') {
       const openInNewTabButton = document.createElement('button');
       openInNewTabButton.className = 'open-in-new-tab-btn';
@@ -296,6 +296,138 @@ function generateContentSections() {
       });
       
       sectionElement.appendChild(listElement);
+    } else if (button.type === 'social') {
+      // Create social content with two columns
+      const socialContent = document.createElement('div');
+      socialContent.className = 'social-content';
+      
+      const socialColumns = document.createElement('div');
+      socialColumns.className = 'social-columns';
+      
+      // Add each column
+      button.socialColumns.forEach(column => {
+        const columnDiv = document.createElement('div');
+        columnDiv.className = 'social-column';
+        
+        // Add column title
+        const columnTitle = document.createElement('h4');
+        columnTitle.textContent = column.title;
+        columnDiv.appendChild(columnTitle);
+        
+        // Add column links
+        const columnList = document.createElement('ul');
+        column.links.forEach(link => {
+          const listItem = document.createElement('li');
+          const linkElement = document.createElement('a');
+          linkElement.href = link.url;
+          linkElement.target = '_blank';
+          linkElement.textContent = link.text;
+          
+          listItem.appendChild(linkElement);
+          columnList.appendChild(listItem);
+        });
+        
+        columnDiv.appendChild(columnList);
+        socialColumns.appendChild(columnDiv);
+      });
+      
+      socialContent.appendChild(socialColumns);
+      sectionElement.appendChild(socialContent);
+    } else if (button.type === 'projects') {
+      // Create projects content with tabs
+      const projectsContent = document.createElement('div');
+      projectsContent.className = 'projects-content';
+      
+      // Create project tabs
+      const projectTabs = document.createElement('div');
+      projectTabs.className = 'project-tabs';
+      
+      button.projects.forEach((project, index) => {
+        const tabBtn = document.createElement('button');
+        tabBtn.className = 'tab-btn';
+        if (index === 0) tabBtn.classList.add('active');
+        tabBtn.textContent = project.title;
+        tabBtn.setAttribute('data-project', project.id);
+        projectTabs.appendChild(tabBtn);
+      });
+      
+      // Create project content area
+      const projectContentArea = document.createElement('div');
+      projectContentArea.className = 'project-content-area';
+      
+      // Create individual project contents
+      button.projects.forEach((project, index) => {
+        const projectContent = document.createElement('div');
+        projectContent.id = project.id;
+        projectContent.className = 'project-content';
+        if (index === 0) projectContent.classList.add('active');
+        
+        // Create project info section
+        const projectInfo = document.createElement('div');
+        projectInfo.className = 'project-info';
+        
+        const projectDescription = document.createElement('p');
+        projectDescription.textContent = project.description;
+        projectInfo.appendChild(projectDescription);
+        
+        // Create project actions
+        const projectActions = document.createElement('div');
+        projectActions.className = 'project-actions';
+        
+        project.actions.forEach(action => {
+          const actionBtn = document.createElement('button');
+          actionBtn.className = 'action-btn';
+          actionBtn.textContent = action.text;
+          actionBtn.addEventListener('click', () => {
+            window.open(action.url, '_blank');
+          });
+          projectActions.appendChild(actionBtn);
+        });
+        
+        projectInfo.appendChild(projectActions);
+        projectContent.appendChild(projectInfo);
+        
+        // Create iframe container
+        const iframeContainer = document.createElement('div');
+        iframeContainer.className = 'iframe-container';
+        
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('data-src', project.iframe);
+        iframe.src = 'about:blank';
+        iframe.title = project.title;
+        iframe.frameBorder = '0';
+        
+        iframeContainer.appendChild(iframe);
+        projectContent.appendChild(iframeContainer);
+        
+        projectContentArea.appendChild(projectContent);
+      });
+      
+      projectsContent.appendChild(projectTabs);
+      projectsContent.appendChild(projectContentArea);
+      sectionElement.appendChild(projectsContent);
+      
+      // Add tab click handlers
+      projectTabs.addEventListener('click', (e) => {
+        if (e.target.classList.contains('tab-btn')) {
+          const targetProjectId = e.target.getAttribute('data-project');
+          
+          // Remove active class from all tabs and contents
+          projectTabs.querySelectorAll('.tab-btn').forEach(tab => tab.classList.remove('active'));
+          projectContentArea.querySelectorAll('.project-content').forEach(content => content.classList.remove('active'));
+          
+          // Add active class to clicked tab and corresponding content
+          e.target.classList.add('active');
+          const targetContent = document.getElementById(targetProjectId);
+          targetContent.classList.add('active');
+          
+          // Load iframe if needed
+          const iframe = targetContent.querySelector('iframe');
+          if (iframe && iframe.hasAttribute('data-src') && iframe.src === 'about:blank') {
+            iframe.src = iframe.getAttribute('data-src');
+          }
+        }
+      });
     } else if (button.type === 'iframe') {
       // Create iframe container
       const iframeContainer = document.createElement('div');
@@ -348,6 +480,17 @@ function setupEventListeners() {
           iframe.src = iframe.getAttribute('data-src');
         }
         
+        // For projects modal, load the first active project iframe
+        if (targetContent.classList.contains('iframe-modal')) {
+          const activeProjectContent = targetContent.querySelector('.project-content.active');
+          if (activeProjectContent) {
+            const projectIframe = activeProjectContent.querySelector('iframe');
+            if (projectIframe && projectIframe.hasAttribute('data-src') && projectIframe.src === 'about:blank') {
+              projectIframe.src = projectIframe.getAttribute('data-src');
+            }
+          }
+        }
+        
         // If this is the about content, load the Tinylytics script
         if (targetId === 'about-content') {
           loadTinylyticsScript();
@@ -397,6 +540,17 @@ function setupButtonListener(button) {
         const iframe = targetContent.querySelector('iframe');
         if (iframe && iframe.hasAttribute('data-src') && iframe.src === 'about:blank') {
           iframe.src = iframe.getAttribute('data-src');
+        }
+        
+        // For projects modal, load the first active project iframe
+        if (targetContent.classList.contains('iframe-modal')) {
+          const activeProjectContent = targetContent.querySelector('.project-content.active');
+          if (activeProjectContent) {
+            const projectIframe = activeProjectContent.querySelector('iframe');
+            if (projectIframe && projectIframe.hasAttribute('data-src') && projectIframe.src === 'about:blank') {
+              projectIframe.src = projectIframe.getAttribute('data-src');
+            }
+          }
         }
         
         // If this is the about content, load the Tinylytics script
