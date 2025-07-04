@@ -177,7 +177,10 @@ function generateAboutSection() {
   const closeButton = document.createElement('button');
   closeButton.className = 'close-btn';
   closeButton.setAttribute('data-target', 'about-content');
-  closeButton.textContent = '×';
+  closeButton.title = 'Close';
+  closeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>`;
+  // Add event listener directly to the close button
+  setupButtonListener(closeButton);
   headerElement.appendChild(closeButton);
   
   // Add header to section
@@ -268,11 +271,14 @@ function generateContentSections() {
     // Add title container to header
     headerElement.appendChild(titleContainer);
     
-    // Add close button
+    // Create and add close button
     const closeButton = document.createElement('button');
     closeButton.className = 'close-btn';
     closeButton.setAttribute('data-target', `${button.id}-content`);
-    closeButton.textContent = '×';
+    closeButton.title = 'Close';
+    closeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>`;
+    // Add event listener directly
+    setupButtonListener(closeButton);
     headerElement.appendChild(closeButton);
     
     // Add header to section

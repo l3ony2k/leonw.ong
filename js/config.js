@@ -34,24 +34,26 @@ const siteConfig = {
         {
           title: "@lok",
           links: [
-            { text: "bluesky", url: "https://lok.on.computer" },
             { text: "are.na", url: "https://are.na/lok" },
+            { text: "bsky", url: "https://lok.on.computer" },
             { text: "omg.lol", url: "https://lok.omg.lol" },
             { text: "special.fish", url: "https://special.fish/lok" },
-            { text: "sourcehut", url: "https://sr.ht/~lok" },
-            { text: "nekoweb", url: "https://lok.nekoweb.org" },
+            { text: "sr.ht", url: "https://sr.ht/~lok" },
+            // { text: "nekoweb", url: "https://lok.nekoweb.org" },
             { text: "neodb", url: "https://neodb.social/users/lok" },
-            { text: "signal: lok.96", url: "https://signal.me/#eu/8Q-JFgLhjGbsPSfgMHep65NmUJNKxTr1uyO-arsGq6AUf2ZaxrtPHY4WLiLrwm9D" }
+            { text: "signal", url: "https://signal.me/#eu/8Q-JFgLhjGbsPSfgMHep65NmUJNKxTr1uyO-arsGq6AUf2ZaxrtPHY4WLiLrwm9D" }
           ]
         },
         {
           title: "@l3on_y2k",
           links: [
+            { text: "github", url: "https://github.com/l3ony2k" },
             { text: "instagram", url: "https://instagram.com/l3on_y2k" },
             { text: "twitter", url: "https://twitter.com/l3on_y2k" },
             { text: "reddit", url: "https://reddit.com/user/l3on_y2k" },
             { text: "telegram", url: "https://t.me/l3on_y2k" },
-            { text: "github", url: "https://github.com/l3ony2k" }
+            { text: "letterboxd", url: "https://letterboxd.com/l3on_y2k/" },
+            { text: "mail", url: "mailto:l3on.y2k@gmail.com" }
           ]
         }
       ]
@@ -105,17 +107,17 @@ const siteConfig = {
         // Height is now controlled by CSS
       }
     },
-    {
-      id: "kinopio",
-      label: "kinopio",
-      type: "iframe",
-      title: "Kinopio",
-      iframe: {
-        src: "https://kinopio.club/embed/?spaceId=WxFUq5kPNkJ0gFgapKSGk&zoom=69",
-        width: "100%"
-        // Height is now controlled by CSS
-      }
-    },
+    // {
+    //   id: "kinopio",
+    //   label: "kinopio",
+    //   type: "iframe",
+    //   title: "Kinopio",
+    //   iframe: {
+    //     src: "https://kinopio.club/embed/?spaceId=WxFUq5kPNkJ0gFgapKSGk&zoom=69",
+    //     width: "100%"
+    //     // Height is now controlled by CSS
+    //   }
+    // },
     {
       id: "blog",
       label: "blog",
