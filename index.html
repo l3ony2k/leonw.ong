@@ -44,10 +44,12 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Leon Wong</title>
+        <!-- Golden Layout CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/golden-layout@2.7.0/dist/css/goldenlayout-base.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/golden-layout@2.7.0/dist/css/themes/goldenlayout-dark-theme.css">
         <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <video id="background-video" autoplay loop muted playsinline poster="images/poster_frame.jpg">
         <!-- Preferred: H.265/HEVC -->
         <source src="videos/output_720p_1.5x_grain_cq32.mp4" type="video/mp4; codecs=hvc1">
@@ -62,13 +64,22 @@
     <!-- The overlay element -->
     <div class="video-overlay"></div>
 
-    <!-- These containers will be populated by JavaScript -->
-    <div id="profile-container" class="content"></div>
-    <div id="button-container" class="btn-container">
-        <!-- Theme toggle button will be added here via JavaScript -->
+    <!-- Header with profile and theme toggle -->
+    <div id="header" class="header">
+        <div class="profile-section">
+            <span class="profile-name">leonw.ong</span>
+        </div>
+        <div class="header-controls">
+            <button id="reset-layout-btn" class="header-btn">reset layout</button>
+            <button id="theme-toggle" class="header-btn">system</button>
+        </div>
     </div>
-    <div id="content-container"></div>
+
+    <!-- Golden Layout Container -->
+    <div id="golden-layout-container"></div>
     
+    <!-- Golden Layout JS -->
+    <script src="https://cdn.jsdelivr.net/npm/golden-layout@2.7.0/dist/umd/goldenlayout.js"></script>
     <!-- Load configuration first, then main JS -->
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>
