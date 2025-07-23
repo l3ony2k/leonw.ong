@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="system">
+<html lang="en" data-theme="dark">
     <head>
         <!-- Basic Meta Tags -->
         <meta charset="UTF-8">
@@ -45,32 +45,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Leon Wong</title>
         <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
 
-    <video id="background-video" autoplay loop muted playsinline poster="images/poster_frame.jpg">
-        <!-- Preferred: H.265/HEVC -->
-        <source src="videos/output_720p_1.5x_grain_cq32.mp4" type="video/mp4; codecs=hvc1">
+        <!-- GoldenLayout dependencies -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="https://golden-layout.com/files/latest/js/goldenlayout.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-base.css" />
+        <link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-dark-theme.css" />
+    </head>
+    <body>
+        <video id="background-video" autoplay loop muted playsinline poster="images/poster_frame.jpg">
+            <source src="videos/output_720p_1.5x_grain_cq32.mp4" type="video/mp4; codecs=hvc1">
+            <source src="videos/output_720p_1.5x_grain_nvenc_h264.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
 
-        <!-- Fallback: H.264/AVC -->
-        <source src="videos/output_720p_1.5x_grain_nvenc_h264.mp4" type="video/mp4">
+        <div id="layout-container" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 1;"></div>
 
-        <!-- Fallback text if video tag is not supported -->
-        Your browser does not support the video tag.
-    </video>
-
-    <!-- The overlay element -->
-    <div class="video-overlay"></div>
-
-    <!-- These containers will be populated by JavaScript -->
-    <div id="profile-container" class="content"></div>
-    <div id="button-container" class="btn-container">
-        <!-- Theme toggle button will be added here via JavaScript -->
-    </div>
-    <div id="content-container"></div>
-    
-    <!-- Load configuration first, then main JS -->
-    <script src="js/config.js"></script>
-    <script src="js/main.js"></script>
-</body>
+        <script src="js/config.js"></script>
+        <script src="js/golden.js"></script>
+    </body>
 </html>
