@@ -77,6 +77,24 @@
 
     <!-- Golden Layout Container -->
     <div id="golden-layout-container"></div>
+
+    <!-- Mobile Layout -->
+    <div id="mobile-layout" class="mobile-layout">
+        <div class="mobile-tab-switcher">
+            <button class="mobile-tab active" data-panel="about">About</button>
+            <button class="mobile-tab" data-panel="social">Social</button>
+            <button class="mobile-tab" data-panel="projects">Projects</button>
+            <button class="mobile-tab" data-panel="blog">Blog</button>
+            <button class="mobile-tab" data-panel="mail">Mail</button>
+        </div>
+        <div class="mobile-panel-container">
+            <div id="mobile-about" class="mobile-panel active"></div>
+            <div id="mobile-social" class="mobile-panel"></div>
+            <div id="mobile-projects" class="mobile-panel"></div>
+            <div id="mobile-blog" class="mobile-panel"></div>
+            <div id="mobile-mail" class="mobile-panel"></div>
+        </div>
+    </div>
     
     <!-- Golden Layout JS -->
     <script src="https://cdn.jsdelivr.net/npm/golden-layout@2.7.0/dist/umd/goldenlayout.js"></script>

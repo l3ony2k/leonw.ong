@@ -115,20 +115,23 @@ a:hover {
   min-height: 100%;
   width: auto;
   height: auto;
-  z-index: -1; /* Behind everything */
+  z-index: -1;
+  /* Behind everything */
   object-fit: cover;
   background: url('/images/poster_frame.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
 .video-overlay {
-  position: fixed; /* Cover the viewport */
+  position: fixed;
+  /* Cover the viewport */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: var(--video-overlay-bg);
-  -webkit-backdrop-filter: blur(5px); /* Safari */
+  -webkit-backdrop-filter: blur(5px);
+  /* Safari */
   backdrop-filter: blur(5px);
   z-index: 0;
 }
@@ -365,7 +368,9 @@ a:hover {
 
 .projects-component .iframe-container {
   flex: 1;
-  padding: 10px;
+  /* padding: 10px; */
+  margin: 10px;
+  border: 1px solid var(--block-border);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -475,8 +480,181 @@ a:hover {
   color: var(--bg-color) !important;
 }
 
-/* Media query for better mobile experience */
-@media (max-width: 600px) {
+/* Mobile Layout Styles */
+.mobile-layout {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  z-index: 1001;
+  /* Above video overlay */
+}
+
+.mobile-tab-switcher {
+  display: flex;
+  background-color: var(--detail-header-bg);
+  border-bottom: 1px solid var(--detail-border);
+  flex-shrink: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+  z-index: 1001;
+  /* Above video overlay */
+}
+
+.mobile-tab-switcher::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-tab {
+  flex: 1;
+  min-width: 80px;
+  padding: 12px 8px;
+  background-color: var(--button-bg);
+  border: none;
+  border-right: 1px solid var(--detail-border);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.mobile-tab:last-child {
+  border-right: none;
+}
+
+.mobile-tab:hover {
+  background-color: var(--button-hover);
+}
+
+.mobile-tab.active {
+  background-color: var(--detail-bg);
+  font-weight: bold;
+  color: var(--link-color);
+}
+
+.mobile-panel-container {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  z-index: 1001;
+  /* Above video overlay */
+}
+
+.mobile-panel {
+  display: none;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 1001;
+  /* Above video overlay */
+}
+
+.mobile-panel.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile-specific component adjustments */
+.mobile-panel .component-content {
+  height: 100%;
+  padding: 0;
+}
+
+.mobile-panel .about-component {
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.mobile-panel .social-component .social-columns {
+  flex-direction: column;
+}
+
+.mobile-panel .social-component .social-column {
+  border-right: none;
+  border-bottom: 1px solid var(--detail-border);
+}
+
+.mobile-panel .social-component .social-column:last-child {
+  border-bottom: none;
+}
+
+.mobile-panel .projects-component .project-tabs {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mobile-panel .projects-component .project-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-panel .projects-component .tab-btn {
+  min-width: 80px;
+  white-space: nowrap;
+}
+
+.mobile-panel .projects-component .project-info {
+  padding: 12px;
+}
+
+.mobile-panel .projects-component .iframe-container {
+  padding: 8px;
+}
+
+.mobile-panel .iframe-component .iframe-container {
+  padding: 8px;
+}
+
+/* Media queries for mobile layout */
+@media (max-width: 768px) {
+  .header {
+    display: flex;
+    /* Show header on mobile */
+    position: relative;
+    z-index: 1001;
+    /* Above video overlay */
+    padding: 8px 10px;
+  }
+
+  .header-btn {
+    height: 28px;
+    padding: 0 8px;
+    font-size: 11px;
+  }
+
+  .profile-name {
+    font-size: 16px;
+  }
+
+  #golden-layout-container {
+    display: none;
+    /* Hide desktop layout on mobile */
+  }
+
+  .mobile-layout {
+    display: flex;
+    /* Show mobile layout */
+    margin: 10px;
+    /* Add margin like desktop */
+    height: calc(100vh - 20px - 50px);
+    /* Account for margins and header (header is ~42px + padding) */
+    border: 1px solid var(--detail-border);
+    background-color: var(--detail-bg);
+    overflow: hidden;
+  }
+
+  body {
+    overflow: hidden;
+  }
+}
+
+/* Tablet and small desktop adjustments */
+/* @media (max-width: 1024px) and (min-width: 769px) {
   .header {
     padding: 8px 10px;
   }
@@ -496,22 +674,22 @@ a:hover {
   }
   
   .projects-component .tab-btn {
-    padding: 10px 3px;
+    padding: 10px 5px;
     font-size: 11px;
   }
   
   .projects-component .project-info {
-    padding: 10px;
+    padding: 12px;
   }
   
   .projects-component .iframe-container {
-    padding: 5px;
+    padding: 8px;
   }
   
   .iframe-component .iframe-container {
-    padding: 5px;
+    padding: 8px;
   }
-}
+} */
 
 /* Fallback Layout Styles */
 .fallback-layout {

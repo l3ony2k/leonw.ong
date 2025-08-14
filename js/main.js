@@ -23,8 +23,9 @@ function initializeSite() {
   // Set up theme toggle
   setupThemeToggle();
   
-  // Initialize Golden Layout
+  // Initialize layouts (both desktop and mobile)
   initializeGoldenLayout();
+  initializeMobileLayout();
   
   // Load Tinylytics after a short delay
   setTimeout(() => {
@@ -396,7 +397,7 @@ function createProjectsContent() {
     iframe.setAttribute('data-src', project.iframe);
     iframe.src = 'about:blank';
     iframe.title = project.title;
-    iframe.frameBorder = '0';
+    iframe.style.border = 'none';
     
     iframeContainer.appendChild(iframe);
     projectContent.appendChild(iframeContainer);
@@ -449,11 +450,13 @@ function createIframeContent(src, title) {
   iframeContainer.className = 'iframe-container';
   
   const iframe = document.createElement('iframe');
-  iframe.src = src;
+  // Use lazy loading for mobile - only load when tab is active
+  iframe.setAttribute('data-src', src);
+  iframe.src = 'about:blank';
   iframe.title = title;
-  iframe.frameBorder = '0';
   iframe.style.width = '100%';
   iframe.style.height = '100%';
+  iframe.style.border = '1px solid var(--detail-border)';
   
   iframeContainer.appendChild(iframe);
   wrapper.appendChild(iframeContainer);
@@ -467,4 +470,81 @@ function resetLayout() {
     localStorage.removeItem('goldenLayoutConfig');
     location.reload(); // Simple way to reset - reload the page
   }
+}
+
+// Initialize Mobile Layout
+function initializeMobileLayout() {
+  console.log('Initializing mobile layout...');
+  
+  // Populate mobile panels with content
+  populateMobilePanels();
+  
+  // Set up mobile tab switching
+  setupMobileTabSwitching();
+}
+
+// Populate mobile panels with content
+function populateMobilePanels() {
+  // About panel
+  const aboutPanel = document.getElementById('mobile-about');
+  const aboutContent = createAboutContent();
+  aboutPanel.appendChild(aboutContent);
+  
+  // Social panel
+  const socialPanel = document.getElementById('mobile-social');
+  const socialContent = createSocialContent();
+  socialPanel.appendChild(socialContent);
+  
+  // Projects panel
+  const projectsPanel = document.getElementById('mobile-projects');
+  const projectsContent = createProjectsContent();
+  projectsPanel.appendChild(projectsContent);
+  
+  // Blog panel
+  const blogPanel = document.getElementById('mobile-blog');
+  const blogContent = createIframeContent('https://l3on.site/', 'Blog');
+  blogPanel.appendChild(blogContent);
+  
+  // Mail panel
+  const mailPanel = document.getElementById('mobile-mail');
+  const mailContent = createIframeContent('https://letterbird.co/lok', 'Mail');
+  mailPanel.appendChild(mailContent);
+}
+
+// Set up mobile tab switching
+function setupMobileTabSwitching() {
+  const tabs = document.querySelectorAll('.mobile-tab');
+  const panels = document.querySelectorAll('.mobile-panel');
+  
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetPanel = tab.getAttribute('data-panel');
+      
+      // Remove active class from all tabs and panels
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      
+      // Add active class to clicked tab and corresponding panel
+      tab.classList.add('active');
+      document.getElementById(`mobile-${targetPanel}`).classList.add('active');
+      
+      // Load iframe content if needed (for blog and mail panels)
+      const activePanel = document.getElementById(`mobile-${targetPanel}`);
+      const iframe = activePanel.querySelector('iframe');
+      if (iframe && iframe.hasAttribute('data-src') && iframe.src === 'about:blank') {
+        iframe.src = iframe.getAttribute('data-src');
+      }
+    });
+  });
+  
+  // Load iframe for initially active panel if needed
+  setTimeout(() => {
+    const activePanel = document.querySelector('.mobile-panel.active');
+    if (activePanel) {
+      const iframe = activePanel.querySelector('iframe');
+      if (iframe && iframe.hasAttribute('data-src') && iframe.src === 'about:blank') {
+        iframe.src = iframe.getAttribute('data-src');
+      }
+    }
+  }, 500);
 }
