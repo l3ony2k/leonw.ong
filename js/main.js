@@ -1,5 +1,4 @@
-// Golden Layout instance
-let layout;
+
 
 // Load Tinylytics script function
 function loadTinylyticsScript() {
@@ -24,7 +23,7 @@ function initializeSite() {
   setupThemeToggle();
   
   // Initialize layouts (both desktop and mobile)
-  initializeGoldenLayout();
+  initializeLayout();
   initializeMobileLayout();
   
   // Load Tinylytics after a short delay
@@ -77,108 +76,12 @@ function updateThemeToggleText(theme) {
   themeToggle.textContent = theme;
 }
 
-// Initialize Golden Layout
-function initializeGoldenLayout() {
-  const container = document.getElementById('golden-layout-container');
+// Initialize Layout
+function initializeLayout() {
+  console.log('Initializing layout...');
   
-  console.log('Initializing Golden Layout...');
-  console.log('Container:', container);
-  console.log('GoldenLayout available:', typeof GoldenLayout);
-  
-  // Check if Golden Layout is available
-  if (typeof GoldenLayout === 'undefined') {
-    console.error('Golden Layout not loaded, using fallback');
-    createFallbackLayout(container);
-    return;
-  }
-
-  // Default layout configuration
-  const defaultConfig = {
-    root: {
-      type: 'row',
-      content: [
-        {
-          type: 'column',
-          width: 30,
-          content: [
-            {
-              type: 'component',
-              componentType: 'about',
-              title: 'About',
-              height: 60
-            },
-            {
-              type: 'component',
-              componentType: 'social',
-              title: 'Social',
-              height: 40
-            }
-          ]
-        },
-        {
-          type: 'column',
-          width: 70,
-          content: [
-            {
-              type: 'stack',
-              content: [
-                {
-                  type: 'component',
-                  componentType: 'projects',
-                  title: 'Projects'
-                },
-                {
-                  type: 'component',
-                  componentType: 'blog',
-                  title: 'Blog'
-                },
-                {
-                  type: 'component',
-                  componentType: 'mail',
-                  title: 'Mail'
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  };
-
-  // Always use default config for now to debug
-  let config = defaultConfig;
-
-  try {
-    // Create Golden Layout instance
-    layout = new GoldenLayout(config, container);
-    console.log('Golden Layout instance created:', layout);
-
-    // Register components
-    registerComponents();
-    console.log('Components registered');
-
-    // Initialize the layout
-    layout.init();
-    console.log('Golden Layout initialized successfully');
-
-    // Save layout on changes
-    layout.on('stateChanged', () => {
-      try {
-        localStorage.setItem('goldenLayoutConfig', JSON.stringify(layout.toConfig()));
-      } catch (e) {
-        console.warn('Failed to save layout:', e);
-      }
-    });
-
-  } catch (error) {
-    console.error('Error initializing Golden Layout:', error);
-    createFallbackLayout(container);
-  }
-
-  // Set up reset layout button
-  document.getElementById('reset-layout-btn').addEventListener('click', () => {
-    resetLayout();
-  });
+  const container = document.getElementById('layout-container');
+  createFallbackLayout(container);
 }
 
 // Create a fallback layout when Golden Layout fails
@@ -249,38 +152,7 @@ function setupFallbackTabs() {
   });
 }
 
-// Register all Golden Layout components
-function registerComponents() {
-  // About component
-  layout.registerComponent('about', function(container) {
-    const content = createAboutContent();
-    container.getElement().appendChild(content);
-  });
 
-  // Social component
-  layout.registerComponent('social', function(container) {
-    const content = createSocialContent();
-    container.getElement().appendChild(content);
-  });
-
-  // Projects component
-  layout.registerComponent('projects', function(container) {
-    const content = createProjectsContent();
-    container.getElement().appendChild(content);
-  });
-
-  // Blog component
-  layout.registerComponent('blog', function(container) {
-    const content = createIframeContent('https://l3on.site/', 'Blog');
-    container.getElement().appendChild(content);
-  });
-
-  // Mail component
-  layout.registerComponent('mail', function(container) {
-    const content = createIframeContent('https://letterbird.co/lok', 'Mail');
-    container.getElement().appendChild(content);
-  });
-}
 
 // Create About content
 function createAboutContent() {
@@ -464,13 +336,7 @@ function createIframeContent(src, title) {
   return wrapper;
 }
 
-// Reset layout to default
-function resetLayout() {
-  if (layout) {
-    localStorage.removeItem('goldenLayoutConfig');
-    location.reload(); // Simple way to reset - reload the page
-  }
-}
+
 
 // Initialize Mobile Layout
 function initializeMobileLayout() {

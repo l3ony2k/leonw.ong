@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="system">
-    <head>
-        <!-- Basic Meta Tags -->
-        <meta charset="UTF-8">
-        <meta name="description"
-            content="Welcome to my little corner of the internet! Check out my blog and social platforms.">
-    
-        <!-- Sets the status bar style to transparent -->
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
-        <!-- Open Graph Meta Tags -->
-        <meta property="og:title" content="Leon Wong" />
-        <meta property="og:description"
-            content="Welcome to my little corner of the internet! Check out my blog and social platforms." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="." />
-        <meta property="og:image" content="assets/og-image.png" />
-        <meta property="og:site_name" content="Leon Wong" />
-    
-        <!-- Twitter Card Meta Tags -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Leon Wong" />
-        <meta name="twitter:description"
-            content="Welcome to my little corner of the internet! Check out my blog and social platforms." />
-        <meta name="twitter:image" content="assets/og-image.png" />
-    
-        <!-- favicon -->
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
-        <link rel="manifest" href="site.webmanifest">
-        <link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#282828">
-        <meta name="msapplication-TileColor" content="#282828">
-        <meta name="theme-color" content="#F0F0F0" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#1A1A1A" media="(prefers-color-scheme: dark)" />
-    
-        <link rel="me" href="https://social.lol/@l3on_y2k">
-        <link rel="me" href="https://github.com/l3on_y2k">
-        <link rel="me" href="https://x.com/l3on_y2k">
-        <link rel="me" href="https://instagram.com/l3on_y2k">
-        <link rel="me" href="mailto:l3on@duck.com">
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Leon Wong</title>
-        <!-- Golden Layout CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/golden-layout@2.7.0/dist/css/goldenlayout-base.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/golden-layout@2.7.0/dist/css/themes/goldenlayout-dark-theme.css">
-        <link rel="stylesheet" href="css/style.css">
+
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="description"
+        content="Welcome to my little corner of the internet! Check out my blog and social platforms.">
+
+    <!-- Sets the status bar style to transparent -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Leon Wong" />
+    <meta property="og:description"
+        content="Welcome to my little corner of the internet! Check out my blog and social platforms." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="." />
+    <meta property="og:image" content="assets/og-image.png" />
+    <meta property="og:site_name" content="Leon Wong" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Leon Wong" />
+    <meta name="twitter:description"
+        content="Welcome to my little corner of the internet! Check out my blog and social platforms." />
+    <meta name="twitter:image" content="assets/og-image.png" />
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#282828">
+    <meta name="msapplication-TileColor" content="#282828">
+    <meta name="theme-color" content="#F0F0F0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1A1A1A" media="(prefers-color-scheme: dark)" />
+
+    <link rel="me" href="https://social.lol/@l3on_y2k">
+    <link rel="me" href="https://github.com/l3on_y2k">
+    <link rel="me" href="https://x.com/l3on_y2k">
+    <link rel="me" href="https://instagram.com/l3on_y2k">
+    <link rel="me" href="mailto:l3on@duck.com">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leon Wong</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <video id="background-video" autoplay loop muted playsinline poster="images/poster_frame.jpg">
         <!-- Preferred: H.265/HEVC -->
@@ -70,13 +70,12 @@
             <span class="profile-name">leonw.ong</span>
         </div>
         <div class="header-controls">
-            <button id="reset-layout-btn" class="header-btn">reset layout</button>
             <button id="theme-toggle" class="header-btn">system</button>
         </div>
     </div>
 
-    <!-- Golden Layout Container -->
-    <div id="golden-layout-container"></div>
+    <!-- Main Layout Container -->
+    <div id="layout-container"></div>
 
     <!-- Mobile Layout -->
     <div id="mobile-layout" class="mobile-layout">
@@ -95,11 +94,10 @@
             <div id="mobile-mail" class="mobile-panel"></div>
         </div>
     </div>
-    
-    <!-- Golden Layout JS -->
-    <script src="https://cdn.jsdelivr.net/npm/golden-layout@2.7.0/dist/umd/goldenlayout.js"></script>
+
     <!-- Load configuration first, then main JS -->
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

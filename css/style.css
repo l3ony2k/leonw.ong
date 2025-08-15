@@ -79,6 +79,35 @@
   box-sizing: border-box;
 }
 
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--block-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-color);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--bg-color);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--block-border) var(--bg-color);
+}
+
 body {
   font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Mono", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Consolas", "Courier New", monospace;
   background-color: var(--bg-color);
@@ -188,12 +217,14 @@ a:hover {
   background-color: var(--button-hover);
 }
 
-/* Golden Layout Container */
-#golden-layout-container {
+/* Layout Container */
+#layout-container {
   flex: 1;
   position: relative;
-  z-index: 1;
+  z-index: 100;
   overflow: hidden;
+  height: calc(100vh - 40px);
+  /* Full height minus header */
 }
 
 /* Golden Layout Component Styles */
@@ -534,7 +565,6 @@ a:hover {
 .mobile-tab.active {
   background-color: var(--detail-bg);
   font-weight: bold;
-  color: var(--link-color);
 }
 
 .mobile-panel-container {
@@ -654,8 +684,8 @@ a:hover {
 }
 
 /* Tablet and small desktop adjustments */
-/* @media (max-width: 1024px) and (min-width: 769px) {
-  .header {
+@media (max-width: 1024px) and (min-width: 769px) {
+  /* .header {
     padding: 8px 10px;
   }
   
@@ -667,10 +697,15 @@ a:hover {
   
   .profile-name {
     font-size: 16px;
-  }
+  } */
   
   .component-content {
     font-size: 14px;
+  }
+
+  .about-component .about-content {
+    font-size: 14px;
+    line-height: 1.5;
   }
   
   .projects-component .tab-btn {
@@ -689,7 +724,7 @@ a:hover {
   .iframe-component .iframe-container {
     padding: 8px;
   }
-} */
+}
 
 /* Fallback Layout Styles */
 .fallback-layout {
@@ -698,6 +733,8 @@ a:hover {
   gap: 10px;
   padding: 10px;
   overflow: hidden;
+  position: relative;
+  z-index: 10;
 }
 
 .fallback-left-column {
