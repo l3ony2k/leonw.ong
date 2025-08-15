@@ -75,7 +75,7 @@ const siteConfig = {
           ]
         },
         {
-          id: "computer-project", 
+          id: "computer-project",
           title: "lok.computer",
           description: "A mini desktop-like environment with modular apps including are.na browser, weather app, and more.",
           iframe: "https://lok.computer",
@@ -86,7 +86,7 @@ const siteConfig = {
         },
         {
           id: "feed-project",
-          title: "are.na blocks feed", 
+          title: "are.na blocks feed",
           description: "A minimalist thoughts feed that displays blocks from your Are.na channel, heavily inspired by thoughts.page.",
           iframe: "https://journal.lok.computer",
           actions: [

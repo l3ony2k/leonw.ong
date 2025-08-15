@@ -642,12 +642,10 @@ a:hover {
 
 /* Media queries for mobile layout */
 @media (max-width: 768px) {
-  .header {
+  /* .header {
     display: flex;
-    /* Show header on mobile */
     position: relative;
     z-index: 1001;
-    /* Above video overlay */
     padding: 8px 10px;
   }
 
@@ -659,9 +657,9 @@ a:hover {
 
   .profile-name {
     font-size: 16px;
-  }
+  } */
 
-  #golden-layout-container {
+  #layout-container {
     display: none;
     /* Hide desktop layout on mobile */
   }
